@@ -1,0 +1,198 @@
+Open the exam.log file.
+
+Write a function ip_result that:
+
+Searches for lines with IP
+Counts the number of each IP
+Puts the results in a dictionary
+Sorts the dictionary
+Puts the results into a file
+Write a function invalid_user_count that:
+Searches for invalid user logins
+Counts the invalid logins for each user
+Puts the results in a dictionary
+Sorts the dictionary
+Puts the result into a file
+Write a function failed_logins that:
+Searches for wrong passwords
+Counts the failed logins
+Puts the results in a dictionary
+Sorts the dictionary
+Puts the result in a file
+Call the functions
+
+
+
+
+
+
+import re
+from collections import Counter
+​
+def ip_result():
+    with open('exam.log', 'r') as f:
+        ips = re.findall(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}', f.read())
+        ip_count = Counter(ips)
+        sorted_ip_count = dict(sorted(ip_count.items(), key=lambda item: item[1], reverse=True))
+        with open('ip_count.txt', 'w') as f:
+            for ip, count in sorted_ip_count.items():
+                f.write(f'{ip}: {count}\n')
+​
+def invalid_user_count():
+    with open('exam.log', 'r') as f:
+        invalid_users = re.findall(r'Invalid user \w+', f.read())
+        invalid_user_count = Counter(invalid_users)
+        sorted_invalid_user_count = dict(sorted(invalid_user_count.items(), key=lambda item: item[1], reverse=True))
+        with open('invalid_user_count.txt', 'w') as f:
+            for user, count in sorted_invalid_user_count.items():
+                f.write(f'{user}: {count}\n')
+​
+def failed_logins():
+    with open('exam.log', 'r') as f:
+        failed_logins = re.findall(r'Failed password for \w+', f.read())
+        failed_login_count = Counter(failed_logins)
+        sorted_failed_login_count = dict(sorted(failed_login_count.items(), key=lambda item: item[1], reverse=True))
+        with open('failed_login_count.txt', 'w') as f:
+            for user, count in sorted_failed_login_count.items():
+                f.write(f'{user}: {count}\n')
+​
+ip_result()
+invalid_user_count()
+failed_logins()
+​
+with open('ip_count.txt', 'r') as file:
+    contents = file.read()
+    print(contents)
+    
+with open('invalid_user_count.txt', 'r') as file:
+    contents = file.read()
+    print(contents)
+    
+with open('failed_login_count.txt', 'r') as file:
+    contents = file.read()
+    print(contents)
+    
+80.237.75.2: 481
+185.182.56.85: 450
+212.237.47.236: 358
+137.74.1.62: 284
+87.27.92.12: 70
+192.129.227.186: 26
+5.255.68.179: 20
+112.112.102.38: 10
+178.68.209.126: 10
+221.148.234.252: 10
+151.40.221.171: 6
+138.19.133.51: 5
+42.159.246.3: 5
+168.70.37.89: 5
+197.245.39.234: 5
+123.150.200.121: 5
+41.59.225.121: 5
+80.211.140.131: 4
+5.8.10.202: 3
+71.6.165.200: 2
+0.0.0.0: 2
+5.39.216.134: 2
+146.0.75.199: 1
+213.202.230.144: 1
+196.52.43.94: 1
+185.156.177.53: 1
+185.156.177.8: 1
+178.15.105.238: 1
+163.172.69.249: 1
+91.121.158.124: 1
+185.222.211.18: 1
+
+Invalid user admin: 14
+Invalid user operator: 9
+Invalid user ubnt: 8
+Invalid user test: 8
+Invalid user administrator: 8
+Invalid user support: 8
+Invalid user ftpuser: 8
+Invalid user 1: 8
+Invalid user git: 7
+Invalid user user: 6
+Invalid user r00t: 4
+Invalid user nagios: 4
+Invalid user Admin: 4
+Invalid user pi: 4
+Invalid user service: 4
+Invalid user r: 4
+Invalid user ethos: 3
+Invalid user RPM: 3
+Invalid user openvpn: 3
+Invalid user m202: 3
+Invalid user redmine: 3
+Invalid user leo: 3
+Invalid user odoo: 3
+Invalid user apc: 3
+Invalid user oracle: 3
+Invalid user miner: 2
+Invalid user debian: 2
+Invalid user postgres: 2
+Invalid user m1: 1
+Invalid user antivirus: 1
+Invalid user apache: 1
+Invalid user backuppc: 1
+Invalid user bank: 1
+Invalid user board: 1
+Invalid user build: 1
+Invalid user byte: 1
+Invalid user bytes: 1
+Invalid user centos: 1
+Invalid user chat: 1
+Invalid user cinema: 1
+Invalid user control: 1
+Invalid user counterstrike: 1
+Invalid user cpanel: 1
+Invalid user cs: 1
+Invalid user csgo: 1
+Invalid user cvs: 1
+Invalid user cyber: 1
+Invalid user cyrus: 1
+Invalid user data: 1
+Invalid user db1: 1
+Invalid user db2inst1: 1
+Invalid user developer: 1
+Invalid user downloads: 1
+Invalid user dvd: 1
+Invalid user dvs: 1
+Invalid user edu: 1
+Invalid user education: 1
+Invalid user fedora: 1
+Invalid user forum: 1
+Invalid user ftp: 1
+Invalid user ftpadmin: 1
+Invalid user gaming: 1
+Invalid user gb: 1
+Invalid user ghani: 1
+Invalid user ghost: 1
+Invalid user gnu: 1
+Invalid user gnuworld: 1
+Invalid user hdsf: 1
+Invalid user home: 1
+Invalid user html: 1
+Invalid user informix: 1
+Invalid user ircd: 1
+Invalid user kernel: 1
+Invalid user linux: 1
+Invalid user linuxmint: 1
+Invalid user mdb: 1
+Invalid user mysql: 1
+Invalid user mythtv: 1
+Invalid user ns2: 1
+Invalid user ns: 1
+Invalid user office: 1
+Invalid user otrs: 1
+Invalid user pc: 1
+Invalid user php: 1
+Invalid user portal: 1
+
+Failed password for invalid: 739
+Failed password for root: 40
+Failed password for sshd: 8
+Failed password for www: 6
+Failed password for games: 1
+Failed password for irc: 1
