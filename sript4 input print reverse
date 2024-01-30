@@ -1,0 +1,22 @@
+Write a program (using a function) that:
+
+Asks the user for a long string containing multiple words.
+Prints back the same string, except with the words in reverse order.
+For example, if the user types the string: 'My name is robert', it will print 'robert is name My'.
+
+
+
+
+
+
+
+def reverse_words(string):
+    words = string.split()
+    words.reverse()
+    return ' '.join(words)
+​
+string = input('Please enter a long string containing multiple words: ')
+reversed_string = reverse_words(string)
+print(f'The reversed string is: {reversed_string}')
+Please enter a long string containing multiple words:  hello from earth from kasey
+The reversed string is: kasey from earth from hello
