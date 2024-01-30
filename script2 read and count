@@ -1,0 +1,19 @@
+
+Write a script that:
+*  Reads the file `problem2.txt`.
+*  Counts how many times 192.168.1.1 appears in the file.
+*  Prints the result.
+
+
+
+
+
+
+with open('problem2.txt', 'r') as f:
+    count = 0
+    for line in f:
+        if '192.168.1.1' in line:
+            count += 1
+    print(f'The number of times 192.168.1.1 appears in the file is: {count}')
+
+The number of times 192.168.1.1 appears in the file is: 5
