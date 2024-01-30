@@ -1,0 +1,18 @@
+Write a script using a function (dedupe) that:
+
+Takes a list l = [1,5,7,2,4,3,5,1,6,2,6].
+Returns a new list that contains all of the elements from the first list, excluding duplicates.
+
+
+
+
+
+
+def dedupe(l):
+    return list(set(l))
+​
+l = [1, 5, 7, 2, 4, 3, 5, 1, 6, 2, 6]
+new_list = dedupe(l)
+print(new_list)
+​
+[1, 2, 3, 4, 5, 6, 7]
