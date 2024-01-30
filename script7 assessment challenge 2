@@ -1,0 +1,66 @@
+Analyze the following code that reads the apache_logs.txt file. Determine what it does. Write your response as code comments.
+
+import sys
+import os
+
+def readfile(f):
+    # Open the file in read mode
+    openfile = open(f,"r")
+
+    # Create three output files
+    unique_outfile = open("uniqueIP.txt","w")
+    all_outfile = open("allIP.txt","w")
+    ipAndUrl_outfile = open("ipAndUrl.txt","w")
+
+    # Initialize some variables
+    lines = []
+    ipAndUrl = {}
+    ip_list = set()
+
+    # Read each line of the file
+    for line in openfile:
+        lines.append(line.strip('\n'))
+
+    # Extract the IP address from each line
+    for line in lines:
+        ip = line.split(" ")[0]
+
+        # If the IP address is already present in the dictionary, append the URL to the list of URLs associated with that IP address
+        if ip in ipAndUrl:
+            ipAndUrl[ip].append(line.split(" ")[6])
+        # Otherwise, create a new key-value pair in the dictionary with the IP address as the key and the URL as the value
+        else:
+            ipAndUrl[ip] = [line.split(" ")[6]]
+        
+        # Write the IP address to the allIP.txt file
+        all_outfile.write(ip)
+        all_outfile.write("\n")
+
+        # Add the IP address to the set of unique IP addresses
+        ip_list.add(ip)
+
+    # Write the unique IP addresses to the uniqueIP.txt file
+    for ip in ip_list:
+        unique_outfile.write(ip)
+        unique_outfile.write("\n")
+
+    # Write the IP addresses with their corresponding URLs to the ipAndUrl.txt file
+    for key, value in ipAndUrl.items(): 
+        ipAndUrl_outfile.write('%s  %s\n' % (key, value))
+
+    # Close all the output files and the input file
+    unique_outfile.close()
+    ipAndUrl_outfile.close()
+    all_outfile.close()
+    openfile.close()
+
+def Main():
+    # Prompt the user to enter a file name
+    file=input("please enter a file name: ")
+
+    # Call the readfile function with the file name as input
+    result = readfile(file)
+
+if __name__ == '__main__':
+    # Call the Main function
+    Main()
