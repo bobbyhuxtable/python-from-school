@@ -1,0 +1,19 @@
+write a script that:
+
+Opens the file problem5.txt.
+Counts each port and puts the results in a dictionary.
+
+
+
+
+
+
+from collections import Counter
+​
+def count_ports(file_name):
+    with open('problem5.txt', 'r') as f:
+        port_count = Counter(line.strip() for line in f)
+        print(port_count)
+​
+count_ports('/home/labsuser/problem5.txt')
+Counter({'80': 7, '22': 5, '443': 3, '25': 3, '445': 3, '21': 2, '389': 1, '3389': 1, '': 1})
