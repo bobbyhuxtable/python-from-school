@@ -1,0 +1,21 @@
+Write a script that:
+
+Reads the file problem1.txt.
+Adds each line to a new list.
+Prints the new list.
+
+
+
+
+
+
+with open('problem1.txt', 'r') as f:
+    lines = f.readlines()
+    lines = [line.strip() for line in lines]
+    for line in lines:
+        print(line)
+item1
+item2
+item3
+item4
+item5
